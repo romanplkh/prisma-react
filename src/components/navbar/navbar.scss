@@ -1,0 +1,22 @@
+$base-color: #272b30;
+$secondary-color: #3f444a;
+
+$btn-success-color: #6dc86d;
+$btn-action-color: #f99c17;
+$link-basic-color: #ffffffe3;
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  height: 5em;
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+
+  & .link {
+    color: $link-basic-color;
+  }
+}
