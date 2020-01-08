@@ -7,11 +7,13 @@ import { particlesConfig } from "./particles.config";
 import Clarifai from "clarifai";
 import { Demographics } from "./components/demographics/demographics";
 import ImageDisplayed from "./components/image-displayed/image-displayed";
-
-// initialize with your api key. This will also work in your browser via http://browserify.org/
+import {
+  extractValueAndProbability,
+  shortenPath
+} from "./utils/dataAggregator";
 
 const app = new Clarifai.App({
-  apiKey: "*REMOVED*"
+  apiKey: `${process.env.REACT_APP_CLARIFI_KEY}`
 });
 
 class App extends React.Component {
@@ -32,19 +34,23 @@ class App extends React.Component {
     const { imageInput } = this.state;
     this.setState({ imageUrl: imageInput });
 
+    console.log(app.apiKey);
+
     console.log(JSON.parse(localStorage.getItem("data")));
 
     const results = JSON.parse(localStorage.getItem("data"));
 
-    const ageArray =
-      results.outputs[0].data.regions[0].data.face.age_appearance.concepts;
+    const ageArray = shortenPath(results, "age_appearance");
+    const genderArray = shortenPath(results, "gender_appearance");
+    const raceArray = shortenPath(results, "multicultural_appearance");
 
-    const genderArray =
-      results.outputs[0].data.regions[0].data.face.gender_appearance.concepts;
+    const ageData = extractValueAndProbability(ageArray);
+    const genderData = extractValueAndProbability(genderArray);
+    const raceData = extractValueAndProbability(raceArray);
 
-    const raceArray =
-      results.outputs[0].data.regions[0].data.face.multicultural_appearance
-        .concepts;
+    console.log(ageData);
+    console.log(genderData);
+    console.log(raceData);
 
     console.log(ageArray, genderArray, raceArray);
 
@@ -53,7 +59,7 @@ class App extends React.Component {
     //     // do something with response
     //     console.log(response);
 
-    //     localStorage.setItem("data", JSON.stringify(response));
+    //     //localStorage.setItem("data", JSON.stringify(response));
     //   },
     //   function(err) {
     //     // there was an error
@@ -70,7 +76,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         <div className="container">
-          <Particles className="particles" params={particlesConfig} />
+          {/*   <Particles className="particles" params={particlesConfig} /> */}
           <ImageInput
             imageUrlChangeHandler={onImageUrlChangeHandler}
             submitHandler={onSubmitHandler}
