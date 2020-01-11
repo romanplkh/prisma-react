@@ -3,7 +3,7 @@ import React from "react";
 const ImageInput = ({ imageUrlChangeHandler, submitHandler }) => {
   return (
     <div>
-      <p>Put your link here: </p>
+      <p>Put a person image link here: </p>
       <div>
         <input type="text" onChange={imageUrlChangeHandler} />
         <button onClick={submitHandler}>Analyse</button>

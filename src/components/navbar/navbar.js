@@ -4,7 +4,15 @@ import "./navbar.scss";
 const Navbar = () => {
   return (
     <nav className="nav">
-      <p className="link">Sign Out</p>
+      <a
+        href="https://github.com/romanplkh/prisma-react"
+        target="_blank"
+        rel="noopener"
+        rel="noreferrer"
+        className="link"
+      >
+        GitHub <i className="fa fa-github"></i>
+      </a>
     </nav>
   );
 };

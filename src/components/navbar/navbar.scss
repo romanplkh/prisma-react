@@ -1,14 +1,9 @@
-$base-color: #272b30;
-$secondary-color: #3f444a;
-
-$btn-success-color: #6dc86d;
-$btn-action-color: #f99c17;
-$link-basic-color: #ffffffe3;
+@import "../../sass/variables.scss";
 
 .nav {
   display: flex;
   justify-content: flex-end;
-  height: 5em;
+  height: 4em;
   align-items: center;
   position: relative;
   top: 0;
@@ -17,6 +12,22 @@ $link-basic-color: #ffffffe3;
   background-color: transparent;
 
   & .link {
-    color: $link-basic-color;
+    text-decoration: none;
+  }
+
+  & .link,
+  i {
+    color: #92969b;
+    font-size: 1.15em;
+  }
+
+  & :hover {
+    color: #fff;
+  }
+}
+
+.link {
+  &:hover > i {
+    color: #fff;
   }
 }

@@ -1,0 +1,81 @@
+@import "../../sass/variables.scss";
+
+.data-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  animation-name: reveal;
+  animation-duration: 1.4s;
+
+  & .circle {
+    margin: 20px;
+    color: #fff;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    animation: reveal;
+  }
+
+  & .caption {
+    font-size: 1.5em;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  & .value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8em;
+    text-align: center;
+  }
+
+  @media screen and (max-width: $lg_min) {
+    flex-flow: column nowrap;
+
+    & .circle {
+      height: 150px;
+      width: 150px;
+    }
+
+    & .value {
+      font-size: 1em;
+    }
+  }
+
+  @keyframes reveal {
+    0% {
+      opacity: 0;
+    }
+
+    25% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    70% {
+      opacity: 0.7;
+    }
+
+    80% {
+      opacity: 0.8;
+    }
+
+    90% {
+      opacity: 0.9;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}

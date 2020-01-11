@@ -1,0 +1,21 @@
+.scanner {
+  height: 2px;
+  background-color: red;
+  position: relative;
+  z-index: 2;
+  animation: processing 4s infinite;
+
+  @keyframes processing {
+    0% {
+      top: 0%;
+    }
+
+    50% {
+      top: 99%;
+    }
+
+    100% {
+      top: 0%;
+    }
+  }
+}
