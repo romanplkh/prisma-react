@@ -25,7 +25,7 @@ class Demographics extends React.Component {
     e.preventDefault();
     this.setState({ loading: true, demographicsData: null, imageUrl:null, error:"" });
 
-    const demographics = await analyzeImage(imageInput, true);
+    const demographics = await analyzeImage(imageInput);
 
     console.log(demographics);
 
