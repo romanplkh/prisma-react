@@ -18,7 +18,7 @@ Simple React.js application that allows to analyze a person's age, gender and cu
 ## Usage
 
 - Fork and clone application
-- Install dependancies
+- Install dependencies
 
 - Obtain API key from [Clarifi](https://docs.clarifai.com/getting-started/getting-started) to get access to AI-powered image recognition service
 
