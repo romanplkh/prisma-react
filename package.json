@@ -1,37 +1,36 @@
 {
   "name": "prisma-react",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "clarifai": "^2.9.1",
-    "node-sass": "^4.13.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-particles-js": "^2.7.0",
-    "react-scripts": "3.3.0"
+  "version": "1.0.0",
+  "description": "backend api data getter",
+  "engines": {
+    "node": "13.6.0",
+    "npm": "6.13.4"
   },
+  "main": "app.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "client": "cd Application && npm start",
+    "server": "nodemon app.js",
+    "build": "cd Application && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "start": "node app.js",
+    "heroku-postbuild": "cd Application && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "clarifai": "^2.9.1",
+    "compression": "1.7.4",
+    "cors": "2.8.5",
+    "dotenv": "7.0.0",
+    "express": "^4.16.4"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "nodemon": "^2.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romanplkh/prisma-react"
+  },
+  "author": "Roman Pelikh",
+  "license": "ISC"
 }

@@ -7,8 +7,7 @@ const Navbar = () => {
       <a
         href="https://github.com/romanplkh/prisma-react"
         target="_blank"
-        rel="noopener"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         className="link"
       >
         GitHub <i className="fa fa-github"></i>
