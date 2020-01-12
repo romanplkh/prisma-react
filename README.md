@@ -1,5 +1,9 @@
 # Prisma application
 
+### Live application is available here:
+
+[Prisma](https://prisma-ai.herokuapp.com/)
+
 ## Description
 
 Simple React.js application that allows to analyze a person's age, gender and cultural appearance based on the provided image URL
