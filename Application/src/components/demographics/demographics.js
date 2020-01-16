@@ -23,9 +23,18 @@ class Demographics extends React.Component {
 
   onSubmitHandler = async (imageInput, e) => {
     e.preventDefault();
-    this.setState({ loading: true, demographicsData: null, imageUrl:null, error:"" });
+    this.setState({
+      loading: true,
+      demographicsData: null,
+      imageUrl: null,
+      error: ""
+    });
 
-    const demographics = await analyzeImage(imageInput);
+    /**
+     * @param imageUrl - image of a person to analyze
+     * @param bool - if set to true, data will be fetched from localStorage, to save API calls limit.
+     */
+    const demographics = await analyzeImage(imageInput, true);
 
     console.log(demographics);
 
@@ -34,7 +43,9 @@ class Demographics extends React.Component {
     } else {
       this.setState({
         loading: false,
-        imageUrl: imageInput,
+        imageUrl: imageInput
+          ? imageInput
+          : "https://engineering.unl.edu/images/staff/Kayla_Person-small.jpg",
         demographicsData: demographics
       });
     }

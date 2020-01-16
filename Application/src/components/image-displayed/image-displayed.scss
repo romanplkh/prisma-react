@@ -1,9 +1,9 @@
 .scanner {
   height: 2px;
-  background-color: red;
+  background-color: #fff;
   position: relative;
   z-index: 2;
-  animation: processing 4s infinite;
+  animation: processing 5s infinite;
 
   @keyframes processing {
     0% {
@@ -17,5 +17,23 @@
     100% {
       top: 0%;
     }
+  }
+}
+
+.image-analyzed {
+  width: 350px;
+  height: auto;
+  filter: grayscale(100%);
+  animation: appear 2s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
   }
 }

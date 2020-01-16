@@ -7,11 +7,7 @@ const ImageDisplayed = React.memo(({ imageUrl }) => {
     <div style={{ marginTop: "40px" }}>
       <div className="scanner"></div>
       {imageUrl && (
-        <img
-          style={{ width: "350px", height: "auto", filter: "grayscale(100%)" }}
-          src={imageUrl}
-          alt="Image"
-        />
+        <img className="image-analyzed" src={imageUrl} alt="Image" />
       )}
     </div>
   );

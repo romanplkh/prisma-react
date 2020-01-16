@@ -16,6 +16,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         <Particles className="particles" params={particlesConfig} />
+        <h1 className="heading">Prisma - Demographics analyzer</h1>
         <div className="container">
           <Demographics />
         </div>
