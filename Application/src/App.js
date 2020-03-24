@@ -5,6 +5,7 @@ import Particles from "react-particles-js";
 import { particlesConfig } from "./particles.config";
 
 import Demographics from "./components/demographics/demographics";
+import Footer from './components/footer/footer';
 
 class App extends React.Component {
   constructor() {
@@ -20,6 +21,7 @@ class App extends React.Component {
         <div className="container">
           <Demographics />
         </div>
+        <Footer />
       </div>
     );
   }

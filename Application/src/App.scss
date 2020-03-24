@@ -1,16 +1,22 @@
-$base-color: #272b30;
+$base-color: #fff;
 @import url("https://fonts.googleapis.com/css?family=B612:400,700&display=swap");
+$breakpoint-phone: 678px;
 
 .App {
   width: 85%;
+  min-height: 100vh;
   margin: 0 auto;
   font-family: "B612", sans-serif;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex: 1;
 }
 
 .heading {
@@ -20,6 +26,16 @@ $base-color: #272b30;
   left: 10;
 }
 
+
+@media (max-width: $breakpoint-phone) {
+  .heading{
+    font-size: 1.4em;
+    display: block;
+    position: relative;
+    text-align: center;
+  }
+}
+
 .particles {
   position: fixed;
   top: 0;
@@ -27,4 +43,5 @@ $base-color: #272b30;
   right: 0;
   bottom: 0;
   z-index: -10;
+  background-color: #1387d9;
 }

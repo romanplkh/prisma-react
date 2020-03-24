@@ -30,33 +30,40 @@ class Demographics extends React.Component {
       error: ""
     });
 
-    /**
-     * @param imageUrl - image of a person to analyze
-     * @param bool - if set to true, data will be fetched from localStorage, to save API calls limit.
-     */
-    const demographics = await analyzeImage(imageInput, true);
 
-    console.log(demographics);
 
-    if (demographics.message && demographics.message != "") {
-      this.setState({ error: demographics.message, loading: false });
+    if (!imageInput) {
+      this.setState({ error: "Please enter the URI with an image of a person", loading: false });
     } else {
-      this.setState({
-        loading: false,
-        imageUrl: imageInput
-          ? imageInput
-          : "https://engineering.unl.edu/images/staff/Kayla_Person-small.jpg",
-        demographicsData: demographics
-      });
+      /**
+         * @param imageUrl - image of a person to analyze
+         * @param bool - if set to true, data will be fetched from localStorage, to save API calls limit.
+         */
+      const demographics = await analyzeImage(imageInput, false);
+
+      if (demographics.message && demographics.message != "") {
+        this.setState({ error: demographics.message, loading: false });
+      } else {
+        this.setState({
+          loading: false,
+          imageUrl: imageInput
+            ? imageInput
+            : "https://engineering.unl.edu/images/staff/Kayla_Person-small.jpg",
+          demographicsData: demographics
+        });
+      }
     }
+
+
   };
 
   render() {
     const { onImageUrlChangeHandler, onSubmitHandler } = this;
-    const { imageUrl, demographicsData, loading } = this.state;
+    const { imageUrl, demographicsData, loading, error } = this.state;
     return (
       <div className="demographics">
         {loading && <Spinner />}
+        {error && <div>{error}</div>}
         {demographicsData && <Results demographicsData={demographicsData} />}
         <ImageInput
           imageUrlChangeHandler={onImageUrlChangeHandler}

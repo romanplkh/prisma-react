@@ -26,7 +26,12 @@ const extractValueAndProbability = dataSet => {
  * @param {*} group type of data to access
  */
 const shortenPath = (results, group) => {
-  return results.outputs[0].data.regions[0].data.face[group].concepts;
+  if (!results.message) {
+    return results.outputs[0].data.regions[0].data.face[group].concepts;
+  } else {
+    return results.message = "Please provide a URL with an image of a person";
+  }
+
 };
 
 /**
@@ -35,7 +40,7 @@ const shortenPath = (results, group) => {
  * @returns values to display on UI
  */
 const processData = results => {
-  if (!results.message) {
+  if (!results.name && Object.keys(results.outputs[0].data).length !== 0 && results.outputs[0].data.regions[0].data.concepts.length > 0) {
     const ageArray = shortenPath(results, "age_appearance");
     const genderArray = shortenPath(results, "gender_appearance");
     const raceArray = shortenPath(results, "multicultural_appearance");
@@ -52,8 +57,11 @@ const processData = results => {
 
     return demographics;
   } else {
-    return results;
+    return { message: "Please provide a valid person image" }
   }
+
+
+
 };
 
 /**
@@ -73,7 +81,9 @@ const getData = async imageUrl => {
     }
   });
 
-  return processData(response.data);
+  return await processData(response.data);
+
+
 };
 
 export const analyzeImage = async (imageUrl, dataFromMemory = false) => {
